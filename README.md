@@ -12,7 +12,6 @@ pip install -r requirements.txt
 
 
 
-
 ## API Endpoints
 POST /api/faqs/
 GET /api/faqs/
