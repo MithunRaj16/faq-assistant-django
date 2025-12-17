@@ -11,7 +11,9 @@ pip install -r requirements.txt
 4. python manage.py runserver
 
 
-
+### Prerequisites
+ A free Groq API key
+ 
 ## API Endpoints
 POST /api/faqs/
 GET /api/faqs/
