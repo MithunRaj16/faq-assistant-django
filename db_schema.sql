@@ -1,0 +1,37 @@
+CREATE TABLE users (
+id SERIAL PRIMARY KEY,
+name VARCHAR(100),
+email VARCHAR(150) UNIQUE NOT NULL
+);
+
+
+CREATE TABLE categories (
+id SERIAL PRIMARY KEY,
+name VARCHAR(100) UNIQUE NOT NULL,
+description TEXT
+);
+
+
+CREATE TABLE tags (
+id SERIAL PRIMARY KEY,
+name VARCHAR(50) UNIQUE NOT NULL
+);
+
+
+CREATE TABLE faqs (
+id SERIAL PRIMARY KEY,
+question TEXT NOT NULL,
+answer TEXT,
+category_id INT REFERENCES categories(id),
+created_by INT REFERENCES users(id),
+updated_by INT REFERENCES users(id),
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+updated_at TIMESTAMP
+);
+
+
+CREATE TABLE faq_tags (
+faq_id INT REFERENCES faqs(id) ON DELETE CASCADE,
+tag_id INT REFERENCES tags(id) ON DELETE CASCADE,
+PRIMARY KEY (faq_id, tag_id)
+);
